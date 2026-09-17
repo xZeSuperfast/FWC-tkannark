@@ -1,0 +1,27 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+table {
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+td {
+  border: 1px solid black;
+  padding: 15px;
+  width: 50%;
+}
+
+.first-cell {
+  background-color: #a8b86d;
+}
+
+.second-cell {
+  background-color: #f4b39b;
+}
