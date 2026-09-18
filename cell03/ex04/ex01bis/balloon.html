@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Interactive Balloon (jQuery Version)</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        #balloon {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+
+<div id="balloon"></div>
+
+<script>
+    $(document).ready(function() {
+        const $balloon = $('#balloon');
+        const colors = ['red', 'green', 'blue'];
+        
+        let currentSize = 200;
+        let colorIndex = 0;
+
+        // ฟังก์ชันอัปเดตหน้าตาของลูกโป่ง
+        function updateBalloon() {
+            $balloon.css({
+                'width': currentSize + 'px',
+                'height': currentSize + 'px',
+                'background-color': colors[colorIndex]
+            });
+        }
+
+        // CLICK EVENT: ขยายขนาดและเปลี่ยนสีไปข้างหน้า
+        $balloon.on('click', function() {
+            currentSize += 10;
+            colorIndex = (colorIndex + 1) % colors.length;
+
+            if (currentSize > 420) {
+                currentSize = 200;
+                colorIndex = 0;
+                alert("POP!");
+            }
+            
+            updateBalloon();
+        });
+
+        // MOUSELEAVE EVENT: ลดขนาดและเปลี่ยนสีย้อนกลับ
+        $balloon.on('mouseleave', function() {
+            currentSize = Math.max(200, currentSize - 5);
+            colorIndex = (colorIndex - 1 + colors.length) % colors.length;
+            updateBalloon();
+        });
+    });
+</script>
+
+</body>
+</html>

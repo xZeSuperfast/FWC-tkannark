@@ -1,0 +1,81 @@
+/* Reset & Body */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #e6e9ed;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+/* Navigation Bar */
+.sncf-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.main-menu {
+    background-color: #004277; /* Classic Railway Blue */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.sandwich {
+    position: relative;
+    display: inline-block;
+}
+
+.menu-label {
+    display: block;
+    color: white;
+    padding: 15px 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+/* The "Hidden" Dropdown */
+.dropdown {
+    display: none; /* The logic: hidden by default */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    min-width: 200px;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    overflow: hidden;
+    z-index: 10;
+}
+
+.dropdown li {
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.dropdown a {
+    display: block;
+    padding: 12px 20px;
+    color: #333;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+/* The CSS Logic: Display on Hover */
+.sandwich:hover .dropdown {
+    display: block;
+}
+
+/* Hover States for Aesthetic */
+.menu-label:hover {
+    background-color: #00569c;
+}
+
+.dropdown li:last-child {
+    border-bottom: none;
+}
+
+.dropdown a:hover {
+    background-color: #f8f9fa;
+    color: #004277;
+    padding-left: 25px; /* Subtle movement effect */
+}

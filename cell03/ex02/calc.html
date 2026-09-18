@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>It's over 9000</title>
+    <style>
+        body { display: flex; justify-content: center; align-items: center; height: 100vh; }
+        .calc-container { border: 1px solid #ccc; padding: 20px; border-radius: 8px; }
+    </style>
+</head>
+<body>
+
+    <div class="calc-container">
+        <input type="text" id="left" placeholder="Left value">
+        
+        <select id="operator">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+            <option value="%">%</option>
+        </select>
+
+        <input type="text" id="right" placeholder="Right value">
+        
+        <input type="submit" value="Try me!" onclick="calculate()">
+    </div>
+
+    <script>
+        // popup alert every 30 seconds
+        setInterval(() => {
+            alert('Please, use me...');
+        }, 30000);
+
+        function calculate() {
+            const leftStr = document.getElementById('left').value;
+            const rightStr = document.getElementById('right').value;
+            const operator = document.getElementById('operator').value;
+
+            // Validation: Must be positive integers
+            if (!isValidInput(leftStr) || !isValidInput(rightStr)) {
+                alert('Error :(');
+                return;
+            }
+
+            const left = parseInt(leftStr, 10);
+            const right = parseInt(rightStr, 10);
+            let result;
+
+            // Handle Division/Modulo by zero
+            if ((operator === '/' || operator === '%') && right === 0) {
+                const msg = "It's over 9000!";
+                console.log(msg);
+                alert(msg);
+                return;
+            }
+
+            // Perform Calculation
+            switch (operator) {
+                case '+': result = left + right; break;
+                case '-': result = left - right; break;
+                case '*': result = left * right; break;
+                case '/': result = left / right; break;
+                case '%': result = left % right; break;
+            }
+
+            console.log(result);
+            alert(result);
+        }
+
+        function isValidInput(str) {
+            // Regex checks if the string contains only digits and is not empty
+            const isNumeric = /^\d+$/.test(str);
+            return isNumeric;
+        }
+    </script>
+</body>
+</html>

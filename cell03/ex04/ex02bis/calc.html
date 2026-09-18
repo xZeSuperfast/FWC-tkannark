@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>It's over 9000</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        body { display: flex; justify-content: center; align-items: center; height: 100vh; font-family: sans-serif; }
+        .calc-container { border: 1px solid #ccc; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        input, select { padding: 5px; margin: 2px; }
+    </style>
+</head>
+<body>
+
+    <div class="calc-container">
+        <input type="text" id="left" placeholder="Left value">
+        
+        <select id="operator">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+            <option value="%">%</option>
+        </select>
+
+        <input type="text" id="right" placeholder="Right value">
+        
+        <input type="submit" id="btn-submit" value="Try me!">
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // แจ้งเตือนทุกๆ 30 วินาที
+            setInterval(() => {
+                alert('Please, use me...');
+            }, 30000);
+
+            // ใช้การดักจับ Event คลิกด้วย jQuery แทน onclick ใน HTML
+            $('#btn-submit').on('click', function() {
+                const leftStr = $('#left').val();
+                const rightStr = $('#right').val();
+                const operator = $('#operator').val();
+
+                // Validation: ตรวจสอบว่าเป็นตัวเลขจำนวนเต็มบวก
+                if (!isValidInput(leftStr) || !isValidInput(rightStr)) {
+                    alert('Error :(');
+                    return;
+                }
+
+                const left = parseInt(leftStr, 10);
+                const right = parseInt(rightStr, 10);
+                let result;
+
+                // ตรวจสอบการหาร/Modulo ด้วยศูนย์
+                if ((operator === '/' || operator === '%') && right === 0) {
+                    const msg = "It's over 9000!";
+                    console.log(msg);
+                    alert(msg);
+                    return;
+                }
+
+                // คำนวณผลลัพธ์
+                switch (operator) {
+                    case '+': result = left + right; break;
+                    case '-': result = left - right; break;
+                    case '*': result = left * right; break;
+                    case '/': result = left / right; break;
+                    case '%': result = left % right; break;
+                }
+
+                console.log(result);
+                alert(result);
+            });
+
+            function isValidInput(str) {
+                // เช็คว่าเป็นตัวเลขล้วน (Positive Integer)
+                return /^\d+$/.test(str);
+            }
+        });
+    </script>
+</body>
+</html>

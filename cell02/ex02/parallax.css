@@ -1,0 +1,98 @@
+/* Ensure the page fills the screen */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #777;
+}
+
+/* Set up the parallax container */
+.parallax {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%; /* Full screen height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Assign specific images */
+.img1 {
+    background-image: url('catowl.jpg'); /* Replace with your first image path */
+}
+
+.img2 {
+    background-image: url('zep\ zep\ zep.jpg'); /* Replace with your second image path */
+}/* Basic Reset */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Common Parallax Settings */
+.parallax {
+    height: 100%; 
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    /* Center the message boxes */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Section 1 Image */
+.img-top {
+    background-image: url('https://images.unsplash.com/photo-1552053831-71594a27632d?q=80&w=1924&auto=format&fit=crop');
+}
+
+/* Section 3 Image */
+.img-bottom {
+    background-image: url('https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?q=80&w=1988&auto=format&fit=crop');
+}
+
+/* The Black Block in the Middle */
+.black-block {
+    background-color: #000;
+    color: white;
+    padding: 150px 20px;
+    text-align: center;
+}
+
+/* Centered Message Style */
+.message-box {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #000;
+    padding: 20px 40px;
+    font-size: 24px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+/* The black block in the middle */
+.content-block {
+    color: #ddd;
+    background-color: #000; /* Black background */
+    text-align: center;
+    padding: 100px 80px;
+}
+
+/* Styling the centered text messages */
+.caption {
+    text-align: center;
+    color: #000;
+}
+
+.caption span.border {
+    background-color: rgba(255, 255, 255, 0.7);
+    color: #000;
+    padding: 18px;
+    font-size: 25px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}

@@ -1,0 +1,25 @@
+body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* This makes the color change feel smooth */
+    transition: background-color 0.4s ease; 
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    border: 3px solid #000;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 4px 4px 0px #000;
+}
+
+button:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px #000;
+}
