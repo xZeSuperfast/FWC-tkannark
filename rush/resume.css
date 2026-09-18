@@ -1,0 +1,408 @@
+@import url('theme.css');
+
+/* Shared layout for both resume pages */
+body {
+    padding-top: 80px;
+    background: var(--surface);
+}
+
+.container {
+    width: min(1120px, 100%);
+    padding-left: 28px;
+    padding-right: 28px;
+}
+
+/* Fixed navigation */
+.custom-navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 16px 0;
+    background: #0a0a0af2;
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(16px);
+}
+
+.custom-navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.home-icon {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: #242424;
+    color: var(--text);
+    text-decoration: none;
+}
+
+.home-icon:hover {
+    background: #333;
+    color: var(--green);
+}
+
+.nav-links {
+    display: flex;
+    gap: 8px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    display: block;
+    padding: 11px 18px;
+    border-radius: 24px;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 700;
+    transition:
+        background 0.2s,
+        color 0.2s;
+}
+
+.nav-links a:hover {
+    background: #282828;
+    color: var(--text);
+}
+
+.nav-links i {
+    margin-right: 6px;
+}
+
+/* Anchor spacing below the fixed navigation */
+section {
+    scroll-margin-top: 96px;
+}
+
+/* Profile banner */
+#profile {
+    padding: 64px 0 52px;
+    background: linear-gradient(160deg, #326247, #1c3828 65%, #18251c);
+}
+
+#profile .container {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    column-gap: 36px;
+    align-content: center;
+}
+
+.profile-img {
+    grid-column: 1;
+    grid-row: 1 / 5;
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    object-position: center 30%;
+    border-radius: 50%;
+    box-shadow: 0 12px 36px #0006;
+    align-self: center;
+}
+
+.profile-label {
+    grid-column: 2;
+    margin: 8px 0 14px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #d5efdd;
+}
+
+.profile-label i {
+    color: var(--green);
+    margin-right: 6px;
+}
+
+.profile-name {
+    grid-column: 2;
+    font-size: clamp(2.5rem, 5.5vw, 4.8rem);
+    line-height: 1.05;
+    font-weight: 850;
+    letter-spacing: -2px;
+    margin-bottom: 16px;
+}
+
+.profile-title {
+    grid-column: 2;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #e0e9e3;
+    margin-bottom: 12px;
+}
+
+.profile-description {
+    grid-column: 2;
+    color: #c7d4cb;
+    font-size: 1rem;
+    line-height: 1.8;
+    margin: 0;
+}
+
+/* Content sections */
+#experience, #education, /* Contact cards */
+#contact {
+    padding: 48px 0;
+}
+
+#experience {
+    background: linear-gradient(#17261d, var(--surface) 260px);
+}
+
+#education {
+    padding-top: 8px;
+}
+
+.section-title {
+    font-size: 1.7rem;
+    font-weight: 750;
+    letter-spacing: -0.6px;
+    margin-bottom: 26px;
+    color: var(--text);
+}
+
+/* Experience and education cards */
+.experience-item,
+.skill-category {
+    background: #1b1b1b;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 26px;
+    margin-bottom: 16px;
+    transition: background 0.2s;
+}
+
+.experience-item:hover,
+.skill-category:hover {
+    background: #242424;
+}
+
+.experience-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.job-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--text);
+}
+
+.company-name {
+    color: var(--green);
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.job-duration {
+    flex-shrink: 0;
+    color: var(--muted);
+    font-size: 0.8rem;
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+}
+
+.job-description,
+.project-description {
+    color: var(--muted);
+    line-height: 1.8;
+    font-size: 0.95rem;
+    margin-top: 16px;
+}
+
+.job-description ul,
+.project-description ul {
+    margin-bottom: 0;
+    padding-left: 20px;
+}
+
+/* Skills */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.skill-category {
+    margin-bottom: 0;
+}
+
+.skill-category h4 {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.skill-category h4 i {
+    color: var(--green);
+}
+
+.skill-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skill-list li {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 7px 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.skill-list li::before {
+    content: '•';
+    color: var(--green);
+}
+
+#contact {
+    border-top: 1px solid var(--border);
+    padding-bottom: 64px;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.contact-card {
+    background: #1b1b1b;
+    border-radius: 8px;
+    padding: 28px 22px;
+    transition: background 0.2s;
+}
+
+.contact-card:hover {
+    background: #282828;
+}
+
+.contact-icon {
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: #1ed76018;
+    color: var(--green);
+    font-size: 1.25rem;
+    margin-bottom: 22px;
+}
+
+.contact-card h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.contact-card a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    overflow-wrap: anywhere;
+}
+
+.contact-card a:hover {
+    color: var(--green);
+    text-decoration: underline;
+}
+
+/* Tablet layout */
+@media (max-width: 900px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    #profile .container {
+        grid-template-columns: 180px minmax(0, 1fr);
+        gap: 0 26px;
+    }
+    .profile-img {
+        width: 180px;
+        height: 180px;
+    }
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Mobile layout */
+@media (max-width: 600px) {
+    body {
+        padding-top: 76px;
+    }
+    .container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .custom-navbar .container {
+        gap: 8px;
+    }
+    .nav-links {
+        gap: 2px;
+    }
+    .nav-links a {
+        padding: 10px 8px;
+        font-size: 0.78rem;
+    }
+    .nav-links i {
+        display: none;
+    }
+    .home-icon {
+        width: 40px;
+        height: 40px;
+    }
+    #profile {
+        padding: 36px 0;
+    }
+    #profile .container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .profile-img {
+        width: 170px;
+        height: 170px;
+        align-self: flex-start;
+        margin-bottom: 24px;
+    }
+    .profile-name {
+        font-size: 2.75rem;
+        letter-spacing: -1.5px;
+        overflow-wrap: anywhere;
+    }
+    .experience-header {
+        flex-direction: column;
+        gap: 12px;
+    }
+    .experience-item,
+    .skill-category {
+        padding: 20px;
+    }
+    .section-title {
+        font-size: 1.5rem;
+    }
+    #experience,
+    #education,
+    #contact {
+        padding: 36px 0;
+    }
+}

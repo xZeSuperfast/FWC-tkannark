@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Our CVs — Profile Library</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        />
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <div class="app-shell">
+            <!-- Library navigation -->
+            <aside class="library-sidebar">
+                <a class="brand" href="index.html">
+                    <i class="fas fa-layer-group" aria-hidden="true"></i>
+                    Our CVs
+                    <span class="brand-dot">.</span>
+                </a>
+                <nav aria-label="Profile library">
+                    <p class="sidebar-label">YOUR LIBRARY</p>
+                    <a class="sidebar-link active" href="index.html" aria-current="page">
+                        <i class="fas fa-home" aria-hidden="true"></i>
+                        Discover
+                    </a>
+                    <p class="sidebar-label">THE PROFILES</p>
+                    <a class="sidebar-link" href="cv1.html">
+                        <img src="assests/66050738.jpg" alt="" />
+                        Thanachat
+                    </a>
+                    <a class="sidebar-link" href="cv2.html">
+                        <img src="assests/xZe.jpg" alt="" />
+                        Tanawat
+                    </a>
+                </nav>
+                <p class="sidebar-note">
+                    Two perspectives.
+                    <br />
+                    One place to discover them.
+                </p>
+            </aside>
+            <main class="main-container">
+                <header class="topbar">
+                    <span class="page-label">Discover</span>
+                    <span class="collection-pill">The CV collection</span>
+                </header>
+                <!-- Introduction -->
+                <section class="hero" aria-labelledby="page-title">
+                    <p class="eyebrow">Meet the people behind the work</p>
+                    <h1 class="header-title" id="page-title">
+                        Different skills.
+                        <br />
+                        Great chemistry.
+                    </h1>
+                    <p class="header-subtitle">
+                        Welcome to our CVs. Explore the experience, projects, and ideas that make
+                        each of us unique.
+                    </p>
+                </section>
+                <!-- Profile collection -->
+                <section class="profiles-section" aria-labelledby="profiles-title">
+                    <div class="section-heading">
+                        <h2 id="profiles-title">Find your next collaborator</h2>
+                        <span>2 profiles</span>
+                    </div>
+                    <div class="cv-cards-container">
+                        <article class="cv-card">
+                            <a
+                                class="portrait-link"
+                                href="cv1.html"
+                                aria-label="Explore Thanachat's resume"
+                            >
+                                <img
+                                    class="portrait"
+                                    src="assests/66050738.jpg"
+                                    alt="Thanachat Thongphad"
+                                />
+                                <span class="open-profile" aria-hidden="true">
+                                    <i class="fas fa-arrow-right"></i>
+                                </span>
+                            </a>
+                            <h3>Thanachat</h3>
+                            <p>
+                                Senior Web Developer with 5+ years of experience in full-stack
+                                development
+                            </p>
+                            <a href="cv1.html" class="cv-link">
+                                View Resume
+                                <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                            </a>
+                        </article>
+                        <article class="cv-card">
+                            <a
+                                class="portrait-link"
+                                href="cv2.html"
+                                aria-label="Explore Tanawat's resume"
+                            >
+                                <img class="portrait" src="assests/xZe.jpg" alt="Tanawat Kannark" />
+                                <span class="open-profile" aria-hidden="true">
+                                    <i class="fas fa-arrow-right"></i>
+                                </span>
+                            </a>
+                            <h3>Tanawat</h3>
+                            <p>
+                                Senior Software Engineer with expertise in cloud architecture and
+                                DevOps
+                            </p>
+                            <a href="cv2.html" class="cv-link">
+                                View Resume
+                                <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                            </a>
+                        </article>
+                    </div>
+                </section>
+                <footer class="library-footer">
+                    A collection of experience, curiosity, and things we've built.
+                </footer>
+            </main>
+        </div>
+    </body>
+</html>

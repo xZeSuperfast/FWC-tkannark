@@ -1,0 +1,50 @@
+/* Shared theme colors */
+:root {
+    color-scheme: dark;
+    --green: #1ed760;
+    --surface: #121212;
+    --surface-hover: #282828;
+    --text: #fff;
+    --muted: #b3b3b3;
+    --border: #ffffff1f;
+}
+
+/* Base styles */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #000;
+    color: var(--text);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+    background: var(--green);
+    color: #000;
+}
+
+a:focus-visible {
+    outline: 3px solid var(--green);
+    outline-offset: 5px;
+}
+
+/* Accessibility: respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+        animation: none !important;
+    }
+}
