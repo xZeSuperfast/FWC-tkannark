@@ -1,57 +1,68 @@
-const ft_list = document.getElementById('ft_list');
-const newBtn = document.getElementById('new_btn');
+const ftList = document.getElementById("ft_list");
+const newBtn = document.getElementById("new-btn");
 
-// 1. Load existing TO DOs from cookies on startup
-window.onload = () => {
-    const cookies = document.cookie.split('; ');
-    const todoCookie = cookies.find(row => row.startsWith('todo_list='));
-    
-    if (todoCookie) {
-        const tasks = JSON.parse(decodeURIComponent(todoCookie.split('=')[1]));
-        // Reverse them to maintain original "top of list" order when re-adding
-        tasks.reverse().forEach(taskText => addTask(taskText, false));
-    }
-};
+function saveToCookie() {
+  const todos = [];
+  for (const item of ftList.children) {
+    todos.push(item.textContent);
+  }
 
-// 2. Event Listener for the "New" button
-newBtn.addEventListener('click', () => {
-    const task = prompt("What do you need to do?");
-    if (task && task.trim() !== "") {
-        addTask(task, true);
+  const date = new Date();
+  date.setTime(date.getTime() + 7 * 24 * 60 * 60 * 1000);
+
+  document.cookie =
+    "ft_list=" +
+    encodeURIComponent(JSON.stringify(todos)) +
+    ";expires=" +
+    date.toUTCString() +
+    ";path=/";
+}
+
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) {
+    return decodeURIComponent(parts.pop().split(";").shift());
+  }
+  return null;
+}
+
+function createTodoElement(text) {
+  const todoDiv = document.createElement("div");
+  todoDiv.textContent = text;
+
+  todoDiv.addEventListener("click", function () {
+    if (confirm("Do you really want to remove this to-do?")) {
+      todoDiv.remove();
+      saveToCookie();
     }
+  });
+
+  return todoDiv;
+}
+
+window.addEventListener("DOMContentLoaded", function () {
+  const savedData = getCookie("ft_list");
+  if (savedData) {
+    try {
+      const todos = JSON.parse(savedData);
+
+      for (const text of todos) {
+        const item = createTodoElement(text);
+        ftList.appendChild(item);
+      }
+    } catch (e) {
+      console.error("Failed to parse cookie:", e);
+    }
+  }
 });
 
-// 3. Function to add a task to the DOM
-function addTask(text, save) {
-    const div = document.createElement('div');
-    div.textContent = text;
-    
-    // Click to remove logic
-    div.addEventListener('click', () => {
-        if (confirm("Do you really want to remove this TO DO?")) {
-            div.remove();
-            saveToCookies();
-        }
-    });
+newBtn.addEventListener("click", function () {
+  const text = prompt("Enter a new TO DO:");
 
-    // Requirement: Must be placed at the top of the list
-    ft_list.prepend(div);
-
-    if (save) saveToCookies();
-}
-
-// 4. Persistence Logic
-function saveToCookies() {
-    const tasks = [];
-    const items = ft_list.querySelectorAll('div');
-    
-    // Collect all text from current divs
-    items.forEach(item => tasks.push(item.textContent));
-    
-    // Stringify and save (expires in 7 days)
-    const d = new Date();
-    d.setTime(d.getTime() + (7*24*60*60*1000));
-    let expires = "expires="+ d.toUTCString();
-    
-    document.cookie = "todo_list=" + encodeURIComponent(JSON.stringify(tasks)) + ";" + expires + ";path=/";
-}
+  if (text !== null && text.trim() !== "") {
+    const newTodo = createTodoElement(text.trim());
+    ftList.prepend(newTodo);
+    saveToCookie();
+  }
+});
